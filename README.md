@@ -15,7 +15,7 @@ This is a Kaggle-sourced dataset used to refine my data analytics skills further
 ### Customer Analysis SQL Queries
 All SQL queries on GitHub.
 
-Link: [Consumer Behavior Analysis](https://github.com/jasondo-da/SQL_Portfolio/blob/main/customer_analysis/queries.sql)
+Link: [Consumer Behavior Analysis](https://github.com/jasondo-da/Consumer_Behavior_Analysis/blob/main/cba_queries.sql)
 
 ### Consumer Behavior Analysis Dataset
 
@@ -23,7 +23,7 @@ The Consumer Behavior and Shopping Habits Dataset provides a detailed overview o
 
 Link: [Original Kaggle Dataset](https://www.kaggle.com/datasets/zeesolver/consumer-behavior-and-shopping-habits-dataset/)
 
-Link: [Cleaned Shopping Behavior Dataset](https://github.com/jasondo-da/SQL_Portfolio/blob/main/customer_analysis/sb_clean.csv)
+Link: [Cleaned Shopping Behavior Dataset](https://github.com/jasondo-da/Consumer_Behavior_Analysis/blob/main/sb_clean.csv)
 
 | Shopping Behavior Dataset Tables | Table Description |
 | :------------- | :------------ |
@@ -74,7 +74,7 @@ GROUP BY location
 ORDER BY state_revenue DESC
 ```
 
-[Output Data](https://github.com/jasondo-da/SQL_Portfolio/blob/main/customer_analysis/customer_concentration_and_revenue.csv)
+[Output Data](https://github.com/jasondo-da/Consumer_Behavior_Analysis/blob/main/customer_concentration_and_revenue.csv)
 
 
 ```sql
@@ -85,7 +85,7 @@ GROUP BY product, category
 ORDER BY product_revenue DESC
 ```
 
-[Output Data](https://github.com/jasondo-da/SQL_Portfolio/blob/main/customer_analysis/product_popularity.csv)
+[Output Data](https://github.com/jasondo-da/Consumer_Behavior_Analysis/blob/main/product_popularity.csv)
 
 
 ```sql
