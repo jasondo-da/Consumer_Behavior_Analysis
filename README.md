@@ -4,7 +4,7 @@
 
 - [Project Introduction](#project-introduction)
     - [Customer Analysis SQL Queries](#customer-analysis-sql-queries)
-    - [Customer Analysis Dataset](#customer-analysis-dataset)
+    - [Consumer Behavior Analysis Dataset](#consumer-behavior-analysis-dataset)
 - [Objective](#objective)
 - [Analysis Outline](#analysis-outline)
 
@@ -106,53 +106,42 @@ ORDER BY avg_rating DESC
 
 ```sql
 /* Gauging customer sentiment through paid shipping preferences */
-SELECT shipping_type, COUNT(shipping_type) shipping_total_count
+SELECT (SELECT COUNT(shipping_type)
+        FROM customer_orders
+        WHERE shipping_type = 'free shipping' 
+            OR shipping_type = 'store pickup') free_shipping_count,
+        (SELECT COUNT(shipping_type)
+        FROM customer_orders
+        WHERE shipping_type = 'express' 
+            OR shipping_type = 'next day air' 
+            OR shipping_type = 'standard' 
+            OR shipping_type = '2-day shipping') paid_prem_shipping_count
 FROM customer_orders
-GROUP BY shipping_type
-ORDER BY shipping_total_count DESC
+LIMIT 1
 ```
 
-| shipping_type | shipping_total_count |
+| free_shipping_count | paid_prem_shipping_count |
 | :-----------: | :----------: |
-| free shipping | 675 |
-| standard | 654 |
-| store pickup | 650 |
-| next day air | 648 |
-| express | 646 |
-| 2-day shipping | 627 |
+| 1325 | 2575 |
 
 
 ```sql
-/* Customers with 5 number of previous orders */
-SELECT COUNT(previous_orders) '5+_orders_customers'
+/* Customers with x number of previous orders */
+SELECT (SELECT COUNT(previous_orders)
+    	FROM customer_orders
+    	WHERE previous_orders > 5
+    	ORDER BY previous_orders DESC) '5+_orders_customers',
+    	(SELECT COUNT(previous_orders)
+    	FROM customer_orders
+    	WHERE previous_orders > 10
+    	ORDER BY previous_orders DESC) '10+_orders_customers',
+    	(SELECT COUNT(previous_orders)
+    	FROM customer_orders
+    	WHERE previous_orders > 20
+    	ORDER BY previous_orders DESC) '20+_orders_customers'
 FROM customer_orders
-WHERE previous_orders > 5
-ORDER BY previous_orders DESC
+LIMIT 1
 ```
-| 5+_orders_customers |
-| :-----------: |
-| 3476 |
-
-```sql
-/* Customers with 10 number of previous orders */
-SELECT COUNT(previous_orders) '10+_orders_customers'
-FROM customer_orders
-WHERE previous_orders > 10
-ORDER BY previous_orders DESC
-```
-
-| 10+_orders_customers |
-| :-----------: |
-| 3116 |
-
-```sql
-/* Customers with 20 number of previous orders */
-SELECT COUNT(previous_orders) '20+_orders_customers'
-FROM customer_orders
-WHERE previous_orders > 20
-ORDER BY previous_orders DESC
-```
-
-| 20+_orders_customers |
-| :-----------: |
-| 2339 |
+| 5+_orders_customers | 10+_orders_customers | 20+_orders_customers |
+| :-----------: | :-----------: | :-----------: |
+| 3476 | 3116 | 2339 |
