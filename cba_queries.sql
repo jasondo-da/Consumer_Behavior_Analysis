@@ -102,25 +102,33 @@ ORDER BY avg_rating DESC
 	
 /* Gauging customer sentiment through paid shipping preferences */
 	
-SELECT shipping_type, COUNT(shipping_type) shipping_total_count
+SELECT (SELECT COUNT(shipping_type)
+        FROM customer_orders
+        WHERE shipping_type = 'free shipping' 
+            OR shipping_type = 'store pickup') free_shipping_count,
+        (SELECT COUNT(shipping_type)
+        FROM customer_orders
+        WHERE shipping_type = 'express' 
+            OR shipping_type = 'next day air' 
+            OR shipping_type = 'standard' 
+            OR shipping_type = '2-day shipping') paid_prem_shipping_count
 FROM customer_orders
-GROUP BY shipping_type
-ORDER BY shipping_total_count DESC
+LIMIT 1
 
 	
 /* Customers with x number of previous orders */
 	
-SELECT COUNT(previous_orders) '5+_orders_customers'
+SELECT (SELECT COUNT(previous_orders)
+	FROM customer_orders
+	WHERE previous_orders > 5
+	ORDER BY previous_orders DESC) '5+_orders_customers',
+	(SELECT COUNT(previous_orders)
+	FROM customer_orders
+	WHERE previous_orders > 10
+	ORDER BY previous_orders DESC) '10+_orders_customers',
+	(SELECT COUNT(previous_orders)
+	FROM customer_orders
+	WHERE previous_orders > 20
+	ORDER BY previous_orders DESC) '20+_orders_customers'
 FROM customer_orders
-WHERE previous_orders > 5
-ORDER BY previous_orders DESC
-
-SELECT COUNT(previous_orders) '10+_orders_customers'
-FROM customer_orders
-WHERE previous_orders > 10
-ORDER BY previous_orders DESC
-
-SELECT COUNT(previous_orders) '20+_orders_customers'
-FROM customer_orders
-WHERE previous_orders > 20
-ORDER BY previous_orders DESC
+LIMIT 1
