@@ -84,7 +84,8 @@ ORDER BY state_revenue DESC
 ```sql
 /* Finding customer favorite products */
 SELECT item_sub_cat product,
-    category, (item_sub_cat) quantity_sold,
+    category,
+    COUNT(item_sub_cat) quantity_sold,
     SUM(purchase_total) product_revenue
 FROM customer_orders
 GROUP BY product, category
