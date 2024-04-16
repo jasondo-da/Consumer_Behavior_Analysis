@@ -70,7 +70,9 @@ FROM sb_clean
 	
 /* Uncovering the main customer demographic’s age and gender */
 
-SELECT gender, COUNT(gender) total_customers, ROUND(avg(age), 1) avg_age
+SELECT gender,
+	COUNT(gender) total_customers,
+	ROUND(avg(age), 1) avg_age
 FROM customer_orders
 GROUP BY gender
 ORDER BY total_customers DESC
@@ -78,7 +80,9 @@ ORDER BY total_customers DESC
 	
 /* Calculating customer concentrations for each state with the amount of revenue generated */
 	
-SELECT location, COUNT(customer_id) customer_count, SUM(purchase_total) state_revenue
+SELECT location,
+	COUNT(customer_id) customer_count,
+	SUM(purchase_total) state_revenue
 FROM customer_orders
 GROUP BY location
 ORDER BY state_revenue DESC
@@ -86,7 +90,10 @@ ORDER BY state_revenue DESC
 
 /* Finding customer favorite products */
 	
-SELECT item_sub_cat product, category, (item_sub_cat) quantity_sold, SUM(purchase_total) product_revenue
+SELECT item_sub_cat product,
+	category,
+	COUNT(item_sub_cat) quantity_sold,
+	SUM(purchase_total) product_revenue
 FROM customer_orders
 GROUP BY product, category
 ORDER BY product_revenue DESC
