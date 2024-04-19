@@ -1,5 +1,7 @@
-/* Creating the dataset table with the correct data types and keys */
+/* Creating schema for project */
+CREATE SCHEMA shopping_behavior
 
+/* Creating the dataset table with the correct data types and keys */
 CREATE TABLE shopping_behavior.customer_orders(
 	customer_id SMALLINT UNSIGNED,
    	age TINYINT UNSIGNED,
@@ -25,7 +27,6 @@ CREATE TABLE shopping_behavior.customer_orders(
 
 	
 /* Filling in the new table with data from the original dataset */
-	
 INSERT INTO customer_orders (
 	customer_id,
 	age,
@@ -69,7 +70,6 @@ FROM sb_clean
 
 	
 /* Uncovering the main customer demographic’s age and gender */
-
 SELECT gender,
 	COUNT(gender) total_customers,
 	ROUND(avg(age), 1) avg_age
@@ -79,7 +79,6 @@ ORDER BY total_customers DESC
 
 	
 /* Calculating customer concentrations for each state with the amount of revenue generated */
-	
 SELECT location,
 	COUNT(customer_id) customer_count,
 	SUM(purchase_total) state_revenue
@@ -89,7 +88,6 @@ ORDER BY state_revenue DESC
 
 
 /* Finding customer favorite products */
-	
 SELECT item_sub_cat product,
 	category,
 	COUNT(item_sub_cat) quantity_sold,
@@ -100,7 +98,6 @@ ORDER BY product_revenue DESC
 
 
 /* Calculating the average customer rating for company products */
-	
 SELECT category, ROUND(AVG(review_rating), 2) avg_rating
 FROM customer_orders
 GROUP BY category
@@ -108,7 +105,6 @@ ORDER BY avg_rating DESC
 
 	
 /* Gauging customer sentiment through paid shipping preferences */
-	
 SELECT (SELECT COUNT(shipping_type)
         FROM customer_orders
         WHERE shipping_type = 'free shipping' 
@@ -124,7 +120,6 @@ LIMIT 1
 
 	
 /* Customers with x number of previous orders */
-	
 SELECT (SELECT COUNT(previous_orders)
 	FROM customer_orders
 	WHERE previous_orders > 5
