@@ -1,3 +1,12 @@
+********************************
+-- Customer Behavior Analysis --
+********************************
+
+
+----------------
+-- Schema SQL --
+----------------	
+
 /* Creating schema for project */
 CREATE SCHEMA shopping_behavior
 
@@ -68,6 +77,10 @@ SELECT customer_id,
 	frequency_of_purchases
 FROM sb_clean
 
+	
+---------------
+-- Query SQL --
+---------------
 	
 /* Uncovering the main customer demographic’s age and gender */
 SELECT gender,
