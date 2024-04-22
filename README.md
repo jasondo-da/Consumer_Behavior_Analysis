@@ -62,6 +62,7 @@ GROUP BY gender
 ORDER BY total_customers DESC
 ```
 
+Output:
 | gender | total_customers | avg_age | 
 | :-----------: | :----------: | :-----------: |
 | male | 2652 | 44.1 |
@@ -103,6 +104,7 @@ GROUP BY category
 ORDER BY avg_rating DESC
 ```
 
+Output:
 | category | avg_rating |
 | :-----------: | :----------: |
 | footwear | 3.79 |
@@ -127,6 +129,7 @@ FROM customer_orders
 LIMIT 1
 ```
 
+Output:
 | free_shipping_count | paid_prem_shipping_count |
 | :-----------: | :----------: |
 | 1325 | 2575 |
@@ -149,6 +152,8 @@ SELECT (SELECT COUNT(previous_orders)
 FROM customer_orders
 LIMIT 1
 ```
+
+Output:
 | 5+_orders_customers | 10+_orders_customers | 20+_orders_customers |
 | :-----------: | :-----------: | :-----------: |
 | 3476 | 3116 | 2339 |
