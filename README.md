@@ -1,5 +1,7 @@
 # Consumer Behavior Analysis
 
+![image](https://github.com/jasondo-da/Consumer_Behavior_Analysis/assets/138195365/a26d5a90-a60e-42d2-b89c-8119f2edc676)
+
 ## Table of Contents
 
 - [Project Introduction](#project-introduction)
