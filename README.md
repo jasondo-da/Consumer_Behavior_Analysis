@@ -7,12 +7,11 @@
 - [Project Introduction](#project-introduction)
     - [Customer Analysis SQL Queries](#customer-analysis-sql-queries)
     - [Consumer Behavior Analysis Dataset](#consumer-behavior-analysis-dataset)
-- [Objective](#objective)
 - [Analysis Outline](#analysis-outline)
 
 ## Project Introduction
 
-This is a Kaggle-sourced dataset used to refine my data analytics skills further and gain more data science experience. The “Customer Behavior and Shopping Habits Dataset” contains a variety of intricate insights into customer preferences and mannerisms when shopping from an untitled online retailer.
+This is a Kaggle-sourced dataset used to refine my data analytics skills further and gain more data science experience. The “Customer Behavior and Shopping Habits Dataset” contains a variety of intricate insights into customer preferences and mannerisms when shopping from an untitled online retailer. The purpose of this project is to be part of an ongoing process to refine and develop my data analysis skills. In this customer analysis, I will use SQL to discover new insights within the dataset to better understand the customers and their purchasing preferences. Key areas of focus include finding the primary demographic, and their product preferences.
 
 ### Customer Analysis SQL Queries
 All SQL queries on GitHub.
@@ -48,9 +47,6 @@ Link: [Cleaned Shopping Behavior Dataset](https://github.com/jasondo-da/Consumer
 | Payment Method | Specifies the mode of payment employed by the customer |
 | Frequency of Purchases | Indicates how often the customer engages in purchasing activities | 
 
-## Objective
-
-The purpose of this project is to be part of an ongoing process to refine and develop my data analysis skills. In this customer analysis, I will use SQL to discover new insights within the dataset to better understand the customers and their purchasing preferences. Key areas of focus include finding the primary demographic, and their product preferences.
 
 ## Analysis Outline
 
